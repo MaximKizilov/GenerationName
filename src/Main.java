@@ -6,7 +6,7 @@ public class Main {
     public static AtomicInteger count4 = new AtomicInteger(0);
     public static AtomicInteger count5 = new AtomicInteger(0);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Random random = new Random();
 //        Set<String> uniqueTexts = new HashSet<>();
         String[] texts = new String[100_000];
@@ -41,6 +41,10 @@ public class Main {
             }
         });
         alphabet.start();
+
+        palindrome.join();
+        oneChar.join();
+        alphabet.join();
 
         System.out.printf("Красивых слов с длиной %d: %d шт \n", 3, count3.intValue());
         System.out.printf("Красивых слов с длиной %d: %d шт\n", 4, count4.intValue());
